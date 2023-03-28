@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div style="padding: 1rem;">
+      <h1>Predictions</h1>
+
+      <table class="table">
+          <tr>
+              <th scope="col">
+                  Question
+              </th>
+               <th scope="col">
+                  Response
+              </th>
+          </tr>
+          <tr>
+              <td>Would you say your health is...</td>
+              <td>{{genHlth}}</td>
+          </tr>
+          <tr>
+              <td>How old are you?</td>
+              <td>{{age}}</td>
+          </tr>
+          <tr>
+              <td>Do you have difficulty walking?</td>
+              <td>
+                  {% if diffWalking == 0 %}<p>No</p>{% endif %}
+                  {% if diffWalking == 1 %}<p>Yes</p>{% endif %}
+              </td>
+          </tr>
+          <tr>
+              <td>Do you have high blood presure?</td>
+              <td>
+                  {% if highBP == 0 %}<p>No</p>{% endif %}
+                  {% if highBP == 1 %}<p>Yes</p>{% endif %}
+              </td>
+          </tr>
+          <tr>
+              <td>Have you had a stroke previously?</td>
+              <td>
+                  {% if stroke == 0 %}<p>No</p>{% endif %}
+                  {% if stroke == 1 %}<p>Yes</p>{% endif %}
+              </td>
+          </tr>
+          <tr>
+              <td>Have you have high levels of cholestrol?</td>
+              <td>
+                  {% if highChol == 0 %}<p>No</p>{% endif %}
+                  {% if highChol == 1 %}<p>Yes</p>{% endif %}
+              </td>
+          </tr>
+      </table>
+
+      <p><em>Based on this model's predictions...</em></p>
+      {% if prediction == 0 %}<p><strong>You are not at risk of heart disease or heart attack.</strong></p>{% endif %}
+      {% if prediction == 1 %}<p><strong>You are at risk of heart disease or heart attack.</strong></p>{% endif %}
+     <button
+             type="submit"
+             class="btn"
+             style="background-color: #00363a; color: #ffffff;"
+     >
+       <a href="{% url 'home' %}" style="text-decoration: none;  color: #ffffff;">Back to Home</a>
+     </button>
+</div>
+{% endblock content %}
